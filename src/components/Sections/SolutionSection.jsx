@@ -1,4 +1,4 @@
-import React, { useState, useRef  } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const descriptions = {
@@ -428,7 +428,13 @@ const SolutionSection = () => {
     }, 300); // 300ms = transition duration과 맞춤
   };
 
-
+  // 이미지 프리로딩
+  useEffect(() => {
+    solutions.forEach((solution) => {
+      const img = new window.Image();
+      img.src = solution.image;
+    });
+  }, []);
 
   return (
     <section id="solution" className="bg-white px-6 lg:px-12 py-24">
