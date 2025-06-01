@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const descriptions = {
@@ -351,7 +351,7 @@ function renderDetailContent(title) {
 }
 
 const SolutionSection = () => {
-  const solutions = [
+  const solutions = useMemo(() => [
     { title: "Consulting", width: "700px", image: "images/solution/consulting.png" },
     { title: "moDon-D", width: "865px", featured: true, image: "images/solution/modon-d.png" },
     { title: "moDon-H", width: "717px", image: "images/solution/modon-h.png" },
@@ -361,7 +361,7 @@ const SolutionSection = () => {
     { title: "moDon-M", width: "666px", image: "images/solution/modon-m.png" },
     { title: "moDon-N", width: "483px", image: "images/solution/modon-n.png" },
     { title: "Satellite Image Analysis", width: "530px", featured: true, image: "images/solution/satellite-analysis.png" }
-  ];
+  ], []);
 
   const [current, setCurrent] = useState(0);
   const [showDetail, setShowDetail] = useState(false); // 애니메이션용
@@ -434,7 +434,7 @@ const SolutionSection = () => {
       const img = new window.Image();
       img.src = solution.image;
     });
-  }, [solutions]);
+  }, []); // solutions는 useMemo로 고정되므로 빈 배열로 안전
 
   return (
     <section id="solution" className="bg-white px-6 lg:px-12 py-24">
