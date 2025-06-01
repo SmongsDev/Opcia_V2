@@ -2,15 +2,15 @@ import React from 'react';
 
 const problems = [
   {
-    img: 'images/problem/problem1.png',
+    img: 'images/problem/problem1.webp',
     text: 'IT-centric monitoring due to outdated equipment and legacy control systems',
   },
   {
-    img: 'images/problem/problem2.png',
+    img: 'images/problem/problem2.webp',
     text: 'Overreliance on network separation (air-gapping)',
   },
   {
-    img: 'images/problem/problem3.png',
+    img: 'images/problem/problem3.webp',
     text: 'Limited security solutions and attack prevention in specialized environments such as industrial facilities',
   },
 ];
@@ -37,7 +37,7 @@ const ProblemSection = () => {
         {problems.map((problem, idx) => (
           <div key={idx} className="relative flex-1 min-w-[280px] max-w-[420px] flex flex-col items-center" style={{ alignSelf: 'center' }}>
             <div className="problem-card">
-              <img src={problem.img} alt={`Problem ${idx + 1}`} className="problem-card-img" />
+              <img src={problem.img} alt={`Problem ${idx + 1}`} loading="lazy" className="problem-card-img" />
               <div className="problem-card-overlay" />
               <div className="problem-card-content">
                 <div className="font-alata text-white text-2xl lg:text-3xl leading-snug" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>

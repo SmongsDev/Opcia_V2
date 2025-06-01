@@ -19,19 +19,19 @@ const Footer = () => {
             </div>
             {/* Center & Right: grid로 배치 */}
             <div className="flex-1 w-full">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-y-0 lg:gap-x-40">
-                {/* Center: Solution */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-y-0 lg:gap-x-20">
+                {/* Left: Solution */}
                 <div className="flex flex-col">
                   <span className="font-alata text-white text-lg mb-4">Solution</span>
-                  <div className="w-full grid grid-cols-2 gap-x-32">
-                    <ul className="text-gray-400 space-y-2 text-base whitespace-nowrap">
+                  <div className="w-full flex gap-x-16 md:gap-x-20 lg:gap-x-24">
+                    <ul className="text-gray-400 space-y-2 text-xs sm:text-sm md:text-base">
                       <li>Consulting</li>
                       <li>Cyber Training Platform</li>
                       <li>moDon-I</li>
                       <li>moDon-N</li>
                       <li>moDon-D</li>
                     </ul>
-                    <ul className="text-gray-400 space-y-2 text-base">
+                    <ul className="text-gray-400 space-y-2 text-xs sm:text-sm md:text-base">
                       <li>moDon-H</li>
                       <li>moDon-M</li>
                       <li>moDon-W</li>
@@ -42,7 +42,7 @@ const Footer = () => {
                 {/* Right: Contact us */}
                 <div className="flex flex-col">
                   <span className="font-alata text-white text-lg mb-4">Contact us</span>
-                  <ul className="text-gray-400 space-y-2 text-base">
+                  <ul className="text-gray-400 space-y-2 text-xs sm:text-sm md:text-base">
                     <li>History</li>
                     <li>Our Partners</li>
                     <li>Office & Partners</li>

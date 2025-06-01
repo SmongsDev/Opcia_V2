@@ -2,15 +2,15 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const descriptions = {
-  "Consulting": "Customized cybersecurity consulting offering penetration testing, vulnerability analysis, security training, and compliance advisory through independent or partner-led engagements.",
-  "moDon-D": "Drone anti-forensics system using encryption techniques to conceal drone-collected data with power-efficient design for end-to-end protection of camera modules, sensors, and system logs.",
-  "moDon-H": "Industrial honeypot using actual PLCs and HMIs with intentional vulnerabilities to attract and monitor attackers, analyzing attack patterns to strengthen real-world defenses.",
-  "moDon-I": "Rust-based whitelist IoT monitoring solution that detects malicious processes, blocks C2 connections, and provides real-time alerts supporting over 20 IoT architectures.",
-  "moDon-W": "Wireless communication intelligence system tracking mobile phones and IoT devices across cellular/Wi-Fi networks with geolocation, DoS monitoring, and OSINT/SIGINT integration.",
-  "Cyber Training Platform": "ICS-based cyber training platform offering customizable modular training from basic to advanced levels with real-world scenario simulations for operational needs.",
-  "moDon-M": "Comprehensive military cybersecurity services providing IoT vulnerability analysis, secure drone firmware development, AI-powered threat detection, and cyber threat intelligence for defense standards.",
-  "moDon-N": "Compact network traffic anomaly detection system for industrial environments supporting over 40 protocols with real-time monitoring and immediate alert transmission.",
-  "Satellite Image Analysis": "Satellite vision-based cargo demand modeling system using data from Maxar, Planet Labs, and Artula with deep learning image alignment for logistics analysis."
+  "Consulting": "Facility-specific consulting on penetration testing, vulnerability analysis, and training",
+  "moDon-D": "Drone Anti-Forensics",
+  "moDon-H": "Industrial Honeynet",
+  "moDon-I": "loT Monitoring and Blocking Solution",
+  "moDon-W": "Wireless Communication Intelligence",
+  "Cyber Training Platform": "Built on industrial control systems (ICS) and industrial network environments",
+  "moDon-M": "Military Cybersecurity Services",
+  "moDon-N": "Network Traffic and Log Anomaly Detection & Analysis",
+  "Satellite Image Analysis": "Satellite Vision based Cargo Demand Modeling & Prediction"
 };
 
 // 상세 내용 렌더 함수 (v1 오버레이 내용 그대로)
@@ -71,13 +71,13 @@ function renderDetailContent(title) {
         </ul>
         <div className="flex justify-center mb-2">
           <img
-            src="images/solution/modon-h-diagram.png"
+            loading="lazy"
+            src="images/solution/modon-h-diagram.webp"
             alt="moDon-H Industrial Honeynet Diagram"
             className="rounded-lg shadow-lg bg-gray-100 object-contain"
             style={{ maxHeight: 320, maxWidth: "100%" }}
           />
         </div>
-        <div className="text-right text-xs text-gray-500 mt-1 pr-1">Taffy Pot</div>
       </div>
     );
   }
@@ -101,7 +101,8 @@ function renderDetailContent(title) {
         </ul>
         <div className="flex flex-col md:flex-row gap-6 mb-8 items-center justify-center">
           <img
-            src="images/solution/modon-i-diagram.png"
+            loading="lazy"
+            src="images/solution/modon-i-diagram.webp"
             alt="moDon-I Architecture"
             className="rounded-lg shadow-lg object-contain w-full md:w-2/3 bg-gray-100"
             style={{ maxHeight: 220 }}
@@ -139,25 +140,29 @@ function renderDetailContent(title) {
         </ul>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           <img
-            src="images/solution/modon-w-1.png"
+            loading="lazy"
+            src="images/solution/modon-w-1.webp"
             alt="moDon-W system 1"
             className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
             style={{ objectFit: "cover" }}
           />
           <img
-            src="images/solution/modon-w-2.png"
+            loading="lazy"
+            src="images/solution/modon-w-2.webp"
             alt="moDon-W system 2"
             className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
             style={{ objectFit: "cover" }}
           />
           <img
-            src="images/solution/modon-w-3.png"
+            loading="lazy"
+            src="images/solution/modon-w-3.webp"
             alt="moDon-W system 3"
             className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
             style={{ objectFit: "cover" }}
           />
           <img
-            src="images/solution/modon-w-4.png"
+            loading="lazy"
+            src="images/solution/modon-w-4.webp"
             alt="moDon-W system 4"
             className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
             style={{ objectFit: "cover" }}
@@ -262,7 +267,8 @@ function renderDetailContent(title) {
         <div className="flex flex-col md:flex-row gap-8 mb-8">
           <div className="flex-1 flex flex-col">
             <img
-              src="images/solution/modon-n-1.png"
+              loading="lazy"
+              src="images/solution/modon-n-1.webp"
               alt="moDon-N Dashboard 1"
               className="rounded-lg shadow-lg object-contain bg-gray-100 mb-4"
               style={{ maxHeight: 220, width: "100%", maxWidth: 380 }}
@@ -279,7 +285,8 @@ function renderDetailContent(title) {
           </div>
           <div className="flex-1 flex flex-col">
             <img
-              src="images/solution/modon-n-2.png"
+              loading="lazy"
+              src="images/solution/modon-n-2.webp"
               alt="moDon-N Dashboard 2"
               className="rounded-lg shadow-lg object-contain bg-gray-100 mb-6"
               style={{ maxHeight: 220, width: "100%", maxWidth: 380 }}
@@ -315,13 +322,15 @@ function renderDetailContent(title) {
         </ul>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <img
-            src="images/solution/satellite-plane-2.png"
+            loading="lazy"
+            src="images/solution/satellite-plane-2.webp"
             alt="Satellite plane 1"
             className="rounded-lg shadow-lg object-cover w-full h-48 bg-gray-100"
             style={{ objectFit: "cover" }}
           />
           <img
-            src="images/solution/satellite-plane-1.png"
+            loading="lazy"
+            src="images/solution/satellite-plane-1.webp"
             alt="Satellite plane 2"
             className="rounded-lg shadow-lg object-cover w-full h-48 bg-gray-100"
             style={{ objectFit: "cover" }}
@@ -330,14 +339,16 @@ function renderDetailContent(title) {
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col items-center">
             <img
-              src="images/solution/satellite-align.png"
+              loading="lazy"
+              src="images/solution/satellite-align.webp"
               alt="Deep Learning-based alignment"
               className="rounded-lg shadow-lg object-contain w-full bg-gray-100"
               style={{ maxHeight: 200 }}
             />
           </div>
           <img
-            src="images/solution/satellite-pose.png"
+            loading="lazy"
+            src="images/solution/satellite-pose.webp"
             alt="Pose estimation"
             className="rounded-lg shadow-lg object-contain w-full bg-gray-100"
             style={{ maxHeight: 200 }}
@@ -352,15 +363,15 @@ function renderDetailContent(title) {
 
 const SolutionSection = () => {
   const solutions = useMemo(() => [
-    { title: "Consulting", width: "700px", image: "images/solution/consulting.png" },
-    { title: "moDon-D", width: "865px", featured: true, image: "images/solution/modon-d.png" },
-    { title: "moDon-H", width: "717px", image: "images/solution/modon-h.png" },
-    { title: "moDon-I", width: "807px", image: "images/solution/modon-i.png" },
-    { title: "moDon-W", width: "613px", image: "images/solution/modon-w.png" },
-    { title: "Cyber Training Platform", width: "491px", image: "images/solution/cyber-training.png" },
-    { title: "moDon-M", width: "666px", image: "images/solution/modon-m.png" },
-    { title: "moDon-N", width: "483px", image: "images/solution/modon-n.png" },
-    { title: "Satellite Image Analysis", width: "530px", featured: true, image: "images/solution/satellite-analysis.png" }
+    { title: "Consulting", width: "700px", image: "images/solution/consulting.webp" },
+    { title: "moDon-D", width: "865px", featured: true, image: "images/solution/modon-d.webp" },
+    { title: "moDon-H", width: "717px", image: "images/solution/modon-h.webp" },
+    { title: "moDon-I", width: "807px", image: "images/solution/modon-i.webp" },
+    { title: "moDon-W", width: "613px", image: "images/solution/modon-w.webp" },
+    { title: "Cyber Training Platform", width: "491px", image: "images/solution/cyber-training.webp" },
+    { title: "moDon-M", width: "666px", image: "images/solution/modon-m.webp" },
+    { title: "moDon-N", width: "483px", image: "images/solution/modon-n.webp" },
+    { title: "Satellite Image Analysis", width: "530px", featured: true, image: "images/solution/satellite-analysis.webp" }
   ], []);
 
   const [current, setCurrent] = useState(0);
@@ -477,6 +488,7 @@ const SolutionSection = () => {
             >
               <img
                 src={solutions[current].image}
+                loading="lazy"
                 alt={solutions[current].title}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ zIndex: 1 }}

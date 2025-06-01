@@ -20,7 +20,7 @@ const Header = ({ activeSection, scrollToSection }) => {
       <div className="flex items-center justify-between px-6 lg:px-12 py-4">
         {/* Logo */}
         <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
-          <img src="images/logo.png" alt="Logo" className="w-6 h-6 object-contain" />
+          <img loading="lazy" src="images/logo.webp" alt="Logo" className="w-6 h-6 object-contain" />
         </div>
 
         {/* Navigation Menu */}
