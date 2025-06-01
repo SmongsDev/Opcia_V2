@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const descriptions = {
@@ -439,14 +439,6 @@ const SolutionSection = () => {
     }, 300); // 300ms = transition duration과 맞춤
   };
 
-  // 이미지 프리로딩
-  useEffect(() => {
-    solutions.forEach((solution) => {
-      const img = new window.Image();
-      img.src = solution.image;
-    });
-  }, []); // solutions는 useMemo로 고정되므로 빈 배열로 안전
-
   return (
     <section id="solution" className="bg-white px-6 lg:px-12 py-24">
       <div className="flex flex-col items-center gap-20 relative bg-white overflow-hidden">
@@ -523,7 +515,7 @@ const SolutionSection = () => {
                         <p
                           className="font-normal"
                           style={{
-                            fontSize: '0.9rem',
+                            fontSize: '1.1rem',
                             color: '#fff',
                             lineHeight: '1.2',
                             margin: 0,
