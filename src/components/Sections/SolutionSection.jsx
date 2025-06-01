@@ -434,7 +434,7 @@ const SolutionSection = () => {
       const img = new window.Image();
       img.src = solution.image;
     });
-  }, []);
+  }, [solutions]);
 
   return (
     <section id="solution" className="bg-white px-6 lg:px-12 py-24">
