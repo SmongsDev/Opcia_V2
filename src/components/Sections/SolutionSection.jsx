@@ -5,6 +5,11 @@ import { useTranslation } from 'react-i18next';
 const SolutionSection = ({ current, setCurrent }) => {
   const { t } = useTranslation();
 
+  // 모바일 감지 (한 번만 계산하고 캐시)
+  const isMobile = useMemo(() => {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }, []);
+
   // descriptions를 i18n으로 변경
   const descriptions = useMemo(() => ({
     "Consulting": t('solution.descriptions.consulting'),
@@ -18,17 +23,35 @@ const SolutionSection = ({ current, setCurrent }) => {
     "Satellite Image Analysis": t('solution.descriptions.satellite')
   }), [t]);
 
-  // 모바일 감지 함수
-  const isMobile = () => {
-    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  };
-
-  // 디바이스에 따른 스크롤 duration 결정
-  const getScrollDuration = () => {
-    if (isMobile()) {
-      return 600; // 모바일: 0.6초
+  // 최적화된 스크롤 함수
+  const scrollToTarget = (targetY, callback) => {
+    if (isMobile) {
+      // 모바일: 즉시 이동
+      window.scrollTo(0, targetY);
+      callback && setTimeout(callback, 16); // 1프레임 후 콜백
+      return;
     }
-    return 1000; // 데스크톱: 1초
+
+    // 데스크톱: 애니메이션
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    const duration = Math.abs(diff) < 500 ? 700 : 1000; // 거리에 따른 duration
+    
+    let start;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - ((-2 * progress + 2) ** 3) / 2; // easeInOutCubic
+      
+      window.scrollTo(0, startY + diff * eased);
+      
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        callback && callback();
+      }
+    };
+    requestAnimationFrame(step);
   };
 
   // 상세 내용 렌더 함수 (i18n 적용)
@@ -398,66 +421,51 @@ const SolutionSection = ({ current, setCurrent }) => {
   const goPrev = () => setCurrent((prev) => (prev === 0 ? solutions.length - 1 : prev - 1));
   const goNext = () => setCurrent((prev) => (prev === solutions.length - 1 ? 0 : prev + 1));
 
-  function easeInOutCubic(t) {
-    return t < 0.5
-      ? 4 * t * t * t
-      : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  }
-
-  // 개선된 slowScrollTo 함수 - 디바이스별 최적화
-  function slowScrollTo(targetY, duration = null, callback) {
-    // duration이 명시적으로 전달되지 않으면 자동으로 결정
-    const actualDuration = duration || getScrollDuration();
-    
-    const startY = window.scrollY;
-    const diff = targetY - startY;
-    
-    // 스크롤 거리가 짧으면 duration을 더 줄임
-    const scrollDistance = Math.abs(diff);
-    const adjustedDuration = scrollDistance < 500 ? actualDuration * 0.7 : actualDuration;
-    
-    let start;
-
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      const time = timestamp - start;
-      const percent = Math.min(time / adjustedDuration, 1);
-      const eased = easeInOutCubic(percent);
-      window.scrollTo(0, startY + diff * eased);
-      if (percent < 1) {
-        window.requestAnimationFrame(step);
-      } else if (callback) {
-        callback();
-      }
-    }
-    window.requestAnimationFrame(step);
-  }
-
-  // 상세 열기
+  // 상세 열기 최적화
   const handleImageClick = () => {
     setIsDetailVisible(true);
-    setTimeout(() => setShowDetail(true), 10); // mount 후 애니메이션 트리거
-    setTimeout(() => {
-      if (detailRef.current) {
-        const y = detailRef.current.getBoundingClientRect().top + window.scrollY - (isMobile() ? 60 : 100);
-        slowScrollTo(y); // 자동으로 디바이스에 맞는 duration 적용
-      }
-    }, 100);
+    
+    if (isMobile) {
+      // 모바일: 즉시 처리
+      setShowDetail(true);
+      requestAnimationFrame(() => {
+        if (detailRef.current) {
+          const y = detailRef.current.getBoundingClientRect().top + window.scrollY - 60;
+          scrollToTarget(y);
+        }
+      });
+    } else {
+      // 데스크톱: 애니메이션과 함께
+      setTimeout(() => setShowDetail(true), 10);
+      setTimeout(() => {
+        if (detailRef.current) {
+          const y = detailRef.current.getBoundingClientRect().top + window.scrollY - 100;
+          scrollToTarget(y);
+        }
+      }, 100);
+    }
   };
 
-  // 상세 닫기
+  // 상세 닫기 최적화
   const handleCloseDetail = () => {
-    setShowDetail(false); // 애니메이션 시작
-    setTimeout(() => {
+    setShowDetail(false);
+    
+    const closeAndScroll = () => {
       if (headerRef.current) {
-        const y = headerRef.current.getBoundingClientRect().top + window.scrollY - (isMobile() ? 40 : 80);
-        slowScrollTo(y, null, () => { // 자동으로 디바이스에 맞는 duration 적용
-          setIsDetailVisible(false); // 스크롤 끝난 후 DOM 제거
-        });
+        const y = headerRef.current.getBoundingClientRect().top + window.scrollY - (isMobile ? 40 : 80);
+        scrollToTarget(y, () => setIsDetailVisible(false));
       } else {
         setIsDetailVisible(false);
       }
-    }, 300); // 300ms = transition duration과 맞춤
+    };
+
+    if (isMobile) {
+      // 모바일: 즉시 처리
+      closeAndScroll();
+    } else {
+      // 데스크톱: 애니메이션 대기
+      setTimeout(closeAndScroll, 300);
+    }
   };
 
   return (
