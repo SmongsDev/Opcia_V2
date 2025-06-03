@@ -1,0 +1,198 @@
+{
+  "welcome": "Welcome",
+  "login": "Login",
+  "logout": "Logout",
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "nav": {
+    "home": "Home",
+    "problem": "Problem",
+    "solution": "Solution",
+    "contact": "Contact us"
+  },
+  "footer": {
+    "description": "We provide penetration testing and vulnerability assessment services for industrial and IoT systems, focusing on critical infrastructure such as nuclear power plants, smart factories, water treatment facilities, semiconductor manufacturing facilities, and military sites.",
+    "office": "Office & Partners",
+    "copyright": "Copyright By OPCIA"   
+  },
+  "hero": {
+    "description": "We provide penetration testing and vulnerability assessment services for industrial and loT systems, focusing on critical infrastructure such as nuclear power plants, smart factories, water treatment facilities, semiconductor manufacturing facilities, and military sites. Our security solutions are designed to bridge IT, loT, and OT technologies, ensuring comprehensive protection across complex operational environments.",
+    "exploreMore": "Explore More",
+    "scrollDown": "Scroll Down"
+  },
+  "problem": {
+    "card1": "IT-centric monitoring due to outdated equipment and legacy control systems",
+    "card2": "Overreliance on network separation (air-gapping)",
+    "card3": "Limited security solutions and attack prevention in specialized environments such as industrial facilities"
+  },
+  "solution": {
+    "consulting": "Consulting",
+    "modonD": "moDon-D",
+    "modonH": "moDon-H", 
+    "modonI": "moDon-I",
+    "modonW": "moDon-W",
+    "cyberTraining": "Cyber Training Platform",
+    "modonM": "moDon-M",
+    "modonN": "moDon-N",
+    "satellite": "Satellite Image Analysis",
+    "prev": "Previous",
+    "next": "Next",
+    "descriptions": {
+      "consulting": "Facility-specific consulting on penetration testing, vulnerability analysis, and training",
+      "modonD": "Drone Anti-Forensics",
+      "modonH": "Industrial Honeynet",
+      "modonI": "loT Monitoring and Blocking Solution",
+      "modonW": "Wireless Communication Intelligence",
+      "cyberTraining": "Built on industrial control systems (ICS) and industrial network environments",
+      "modonM": "Military Cybersecurity Services",
+      "modonN": "Network Traffic and Log Anomaly Detection & Analysis",
+      "satellite": "Satellite Vision based Cargo Demand Modeling & Prediction"
+    },
+    "details": {
+      "consulting": {
+        "item1": "Facility-specific consulting on penetration testing, vulnerability analysis, and training",
+        "item2": "Independent or partner-led engagements based on project needs",
+        "item3": "Cyber & physical penetration testing, vulnerability research, compliance advisory",
+        "item4": "Security awareness and professional workforce training"
+      },
+      "modonD": {
+        "droneAntiForensics": "Drone Anti-Forensics",
+        "droneAntiForensicsDesc": "A set of techniques designed to evade detection or hinder investigation by manipulating or concealing data collected by drones. Typically used to obscure illegal drone activities and disrupt forensic analysis.",
+        "encryptedDataTypes": "Encrypted Data Types",
+        "encryptedDataTypesDesc": "Includes video, image, GPS information, and log data related to sensor activity",
+        "encryption": {
+          "item1": "Software-based data encryption",
+          "item2": "Optimized encryption targeting specific data types", 
+          "item3": "Hardware-based encryption",
+          "item4": "Power-efficient design for minimal battery consumption"
+        },
+        "firmwareDesc": "Firmware-level encryption + hardware-integrated security = end-to-end protection covering camera modules, sensors, and system logs",
+        "lightweightDesc": "Lightweight and power-optimized for minimal battery consumption",
+        "readyForDeployment": "ModOn-D is ready for real-world deployment."
+      },
+      "modonH": {
+        "item1": "Diverts attacks away from real systems using actual industrial equipment",
+        "item2": "Built with PLCs and HMIs to simulate physical control environments",
+        "item3": "Segmented networks and intentional vulnerabilities attract and monitor attackers",
+        "item4": "Attack patterns are analyzed to strengthen real-world defenses",
+        "diagramAlt": "moDon-H Industrial Honeynet Diagram"
+      },
+      "modonI": {
+        "whitelistDesc": "Whitelist-based access control and blocking solution developed in",
+        "rustLanguage": "Rust Language",
+        "item1": "Detects and collects malicious processes and binaries running on IoT/IIoT devices",
+        "item2": "Monitors specific directories in real time and dumps created binaries upon detection",
+        "item3": "Blocks binaries identified as malicious",
+        "item4": "Detects and blocks connections to C2 (Command and Control) servers",
+        "item5": "Provides real-time alerts and customizable policies via the IDX management interface",
+        "item6": "Supports legacy systems and over 20 IoT CPU architectures and operating systems",
+        "architectureAlt": "moDon-I Architecture",
+        "feature1": {
+          "title": "1. Malware and Detection & Blocking Anomalous Process",
+          "desc": "Detects abnormal processes by comparing real-time process activity against a whitelist of known legitimate processes"
+        },
+        "feature2": {
+          "title": "2. File/Directory Anomaly Detection Blocking",
+          "desc": "Monitors user-defined paths to detect unauthorized file or directory creation, modification, or deletion activities"
+        }
+      },
+      "modonW": {
+        "item1": "Tracking mobile phones and IoT devices over cellular networks (3G, 4G, 5G)",
+        "item2": "Locating Wi-Fi & cellular devices, access points, routers, and IoT equipment with precise geolocation",
+        "item3": "Denial of service (DoS) on cellular and Wi-Fi networks",
+        "item4": "IMSI and MAC address acquisition for identification and tracking",
+        "item5": "Detection of hidden wireless devices (phones, recorders, cameras, routers, laptops, etc.)",
+        "item6": "Simultaneous L-band monitoring of Iridium, Thuraya, and IsatPhone Pro satellite handsets using a unified sensor",
+        "item7": "Integration of wireless intelligence into proprietary Webint system (OSINT + SIGINT + Deep Web + SNS)",
+        "system1Alt": "moDon-W system 1",
+        "system2Alt": "moDon-W system 2",
+        "system3Alt": "moDon-W system 3",
+        "system4Alt": "moDon-W system 4"
+      },
+      "cyberTraining": {
+        "item1": "Facility-specific consulting on penetration testing, vulnerability analysis, and training",
+        "item2": "Independent or partner-led engagements based on project needs",
+        "item3": "Cyber & physical penetration testing, vulnerability research, compliance advisory",
+        "item4": "Security awareness and professional workforce training"
+      },
+      "modonM": {
+        "needTitle": "Need for Military Cybersecurity",
+        "need": {
+          "item1": "Drones, sensors, and comms systems are key cyber targets",
+          "item2": "More mission failures and data leaks from GPS spoofing & drone hacks",
+          "item3": "Legacy defenses struggle with real-time, complex threats",
+          "item4": "Proactive security is essential for military systems and networks"
+        },
+        "techTitle": "Technologies & Capabilities",
+        "tech": {
+          "item1": "IoT vulnerability analysis and hacking prevention",
+          "item1Sub": "(CCTV, routers, drones, multifunction devices, robots, etc.)",
+          "item2": "Development and analysis of secure drone firmware",
+          "item2Sub": "Includes anti-forensics design to prevent data recovery from downed mission drones",
+          "item3": "Multi-platform analysis tools for ARM, PPC, MIPS, etc.",
+          "item3Sub": "Uses AI-powered analysis to assess potential vulnerabilities",
+          "item4": "Network and infrastructure security implementation (service integration projects)",
+          "item5": "Security assessment of foreign security equipment",
+          "item5Sub": "Including unauthorized and uncertified imported devices",
+          "item6": "CTI (Cyber Threat Intelligence) via satellite communication monitoring",
+          "item6Sub": "Tracking satellite phone activity within domestic use",
+          "item7": "THA (Threat Hunting Analysis)",
+          "item7Sub": "Detection of abnormal or emerging threats"
+        },
+        "benefitsTitle": "Expected Benefits",
+        "benefits": {
+          "item1": "Lightweight agent enables real-time anomaly detection for stable, continuous operation",
+          "item2": "Firmware and data encryption blocks classified info leaks at the source",
+          "item3": "AI-driven response counters zero-day and insider threats instantly",
+          "item4": "Meets global cybersecurity standards (e.g., EU CRA) for defense market readiness"
+        }
+      },
+      "modonN": {
+        "item1": "Compact network devices deployable without impacting existing industrial environments",
+        "item2": "Designed for proactive detection and early response rather than direct blocking, considering the constraints of industrial environments",
+        "item3": "Supports analysis of over 40 industrial protocols",
+        "item4": "Customizable to fit specific site requirements",
+        "item5": "Real-time monitoring of network traffic",
+        "item6": "Visual dashboards and anomaly history management tools",
+        "item7": "Immediate alert transmission via messenger or email upon abnormal traffic detection",
+        "dashboard1Alt": "moDon-N Dashboard 1",
+        "dashboard2Alt": "moDon-N Dashboard 2",
+        "keyFeaturesTitle": "Key Features",
+        "keyFeatures": {
+          "item1": "Anomaly behavior detection and real-time response",
+          "item2": "Support for industrial network protocols",
+          "item3": "Compatibility with existing network infrastructure",
+          "item4": "Network traffic logging and management",
+          "item5": "Alert and notification system",
+          "item6": "Data visualization dashboard"
+        },
+        "deploymentTitle": "Deployment Benefits",
+        "deployment": {
+          "item1": "Enhanced Real-Time Security",
+          "item2": "Minimized Risk Exposure",
+          "item3": "Improved Operational Efficiency",
+          "item4": "Compliance with Laws & Regulations"
+        }
+      },
+      "satellite": {
+        "mainDesc": "Satellite Vision based Cargo Demand Modeling & Prediction",
+        "dataTitle": "Data",
+        "data": {
+          "item1": "Satellite Image from Maxar, Planet Labs, Arlula",
+          "item2": "Air Cargo Warehouses Data",
+          "item3": "International Logistics Company Data"
+        },
+        "plane1Alt": "Satellite plane 1",
+        "plane2Alt": "Satellite plane 2", 
+        "alignmentAlt": "Deep Learning-based alignment",
+        "poseAlt": "Pose estimation"
+      }
+    }
+  },
+  "common": {
+    "close": "Close"
+  }
+}
