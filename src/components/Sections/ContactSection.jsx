@@ -1,8 +1,9 @@
 // src/components/Sections/ContactSection.jsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ContactSection = () => {
-
+  const { t } = useTranslation();
   return (
     <section id="contact" className="bg-white px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-24">
       <div className="flex flex-col items-start gap-[48px] sm:gap-[72px] lg:gap-[96px] px-4 sm:px-6 lg:px-[45px] py-[32px] sm:py-[42px] lg:py-[52px] relative bg-white">
@@ -13,7 +14,7 @@ const ContactSection = () => {
             <div className="flex h-[80px] sm:h-[120px] lg:h-[178px] items-end justify-start lg:justify-end gap-[36px] sm:gap-[54px] lg:gap-[72px] relative self-stretch w-full">
               <div className="flex flex-col items-start gap-[10px] sm:gap-[12px] lg:gap-[15px] relative flex-1 grow">
                 <div className="relative w-fit font-alata font-normal text-black text-4xl sm:text-6xl lg:text-[75px] tracking-[0.5px] sm:tracking-[1px] lg:tracking-[2.25px] leading-[28px] sm:leading-[40px] lg:leading-[75px] whitespace-nowrap overflow-hidden text-ellipsis">
-                  Contact us
+                  {t('nav.contact')}
                 </div>
               </div>
             </div>

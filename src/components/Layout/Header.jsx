@@ -1,18 +1,23 @@
 // src/components/Layout/Header.jsx
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Header = ({ activeSection, scrollToSection }) => {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState('EN');
+  const { t, i18n } = useTranslation();
 
   const navItems = [
-    { name: 'Home', id: 'home' },
-    { name: 'Problem', id: 'problem' },
-    { name: 'Solution', id: 'solution' },
-    { name: 'Contact us', id: 'contact' }
+    { name: t('nav.home'), id: 'home' },
+    { name: t('nav.problem'), id: 'problem' },
+    { name: t('nav.solution'), id: 'solution' },
+    { name: t('nav.contact'), id: 'contact' }
   ];
-  const languages = ['EN', 'KR'];
+  const languages = [
+    { code: 'en', label: 'EN' },
+    { code: 'ko', label: 'KR' }
+  ];
 
   return (
     // <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
@@ -54,14 +59,15 @@ const Header = ({ activeSection, scrollToSection }) => {
             <div className="absolute top-full right-0 mt-2 bg-white rounded-md shadow-lg py-2 min-w-16">
               {languages.map((lang) => (
                 <button
-                  key={lang}
+                  key={lang.code}
                   onClick={() => {
-                    setCurrentLang(lang);
+                    setCurrentLang(lang.label);
+                    i18n.changeLanguage(lang.code);
                     setIsLangOpen(false);
                   }}
                   className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
                 >
-                  {lang}
+                  {lang.label}
                 </button>
               ))}
             </div>

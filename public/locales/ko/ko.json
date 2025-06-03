@@ -1,0 +1,198 @@
+{
+  "welcome": "환영합니다",
+  "login": "로그인",
+  "logout": "로그아웃",
+  "home": "홈",
+  "about": "소개",
+  "contact": "문의하기",
+  "submit": "제출",
+  "cancel": "취소",
+  "nav": {
+    "home": "홈",
+    "problem": "문제",
+    "solution": "솔루션",
+    "contact": "문의하기"
+  },
+  "footer": {
+    "description": "OPCIA는 원자력 발전소, 스마트 팩토리, 정수장, 반도체 제조시설, 군사시설 등 주요 인프라를 대상으로 산업 및 IoT 시스템의 침투 테스트와 취약점 평가 서비스를 제공합니다.",
+    "office": "오피스 & 파트너",
+    "copyright": "Copyright By OPCIA"
+  },
+  "hero": {
+    "description": "OPCIA는 원자력 발전소, 스마트 팩토리, 정수장, 반도체 제조시설, 군사시설 등 주요 인프라를 대상으로 산업 및 IoT 시스템의 침투 테스트와 취약점 평가 서비스를 제공합니다. IT, IoT, OT 기술을 아우르는 보안 솔루션으로 복잡한 운영 환경의 종합적 보호를 실현합니다.",
+    "exploreMore": "더 알아보기",
+    "scrollDown": "아래로 스크롤"
+  },
+  "problem": {
+    "card1": "노후 장비와 레거시 제어 시스템으로 인한 IT 중심의 모니터링",
+    "card2": "망분리(에어갭)에 대한 과도한 의존",
+    "card3": "산업 시설 등 특수 환경에서의 제한적인 보안 솔루션 및 공격 방지"
+  },
+  "solution": {
+    "consulting": "Consulting",
+    "modonD": "moDon-D",
+    "modonH": "moDon-H", 
+    "modonI": "moDon-I",
+    "modonW": "moDon-W",
+    "cyberTraining": "Cyber Training Platform",
+    "modonM": "moDon-M",
+    "modonN": "moDon-N",
+    "satellite": "Satellite Image Analysis",
+    "prev": "이전",
+    "next": "다음",
+    "descriptions": {
+      "consulting": "시설별 침투 테스트, 취약점 분석 및 교육 컨설팅",
+      "modonD": "드론 안티 포렌식",
+      "modonH": "산업용 허니넷",
+      "modonI": "IoT 모니터링 및 차단 솔루션",
+      "modonW": "무선 통신 인텔리전스",
+      "cyberTraining": "산업제어시스템(ICS) 및 산업 네트워크 환경 기반 구축",
+      "modonM": "군사 사이버보안 서비스",
+      "modonN": "네트워크 트래픽 및 로그 이상 탐지 & 분석",
+      "satellite": "위성 영상 기반 화물 수요 모델링 및 예측"
+    },
+    "details": {
+      "consulting": {
+        "item1": "시설별 침투 테스트, 취약점 분석 및 교육 컨설팅",
+        "item2": "프로젝트 요구사항에 따른 독립적 또는 파트너 주도 참여",
+        "item3": "사이버 및 물리적 침투 테스트, 취약점 연구, 컴플라이언스 자문",
+        "item4": "보안 인식 및 전문 인력 교육"
+      },
+      "modonD": {
+        "droneAntiForensics": "드론 안티 포렌식",
+        "droneAntiForensicsDesc": "드론이 수집한 데이터를 조작하거나 은폐하여 탐지를 회피하거나 수사를 방해하기 위해 설계된 기술 세트입니다. 일반적으로 불법 드론 활동을 은폐하고 포렌식 분석을 방해하는 데 사용됩니다.",
+        "encryptedDataTypes": "암호화 데이터 유형",
+        "encryptedDataTypesDesc": "센서 활동과 관련된 비디오, 이미지, GPS 정보 및 로그 데이터 포함",
+        "encryption": {
+          "item1": "소프트웨어 기반 데이터 암호화",
+          "item2": "특정 데이터 유형을 대상으로 한 최적화된 암호화", 
+          "item3": "하드웨어 기반 암호화",
+          "item4": "최소 배터리 소모를 위한 전력 효율적 설계"
+        },
+        "firmwareDesc": "펌웨어 레벨 암호화 + 하드웨어 통합 보안 = 카메라 모듈, 센서 및 시스템 로그를 포괄하는 종단 간 보호",
+        "lightweightDesc": "최소 배터리 소모를 위한 경량화 및 전력 최적화",
+        "readyForDeployment": "ModOn-D는 실제 배포 준비가 완료되었습니다."
+      },
+      "modonH": {
+        "item1": "실제 산업 장비를 사용하여 공격을 실제 시스템에서 멀리 유도",
+        "item2": "물리적 제어 환경을 시뮬레이션하기 위해 PLC 및 HMI로 구축",
+        "item3": "분할된 네트워크와 의도적인 취약점이 공격자를 유인하고 모니터링",
+        "item4": "공격 패턴을 분석하여 실제 방어체계를 강화",
+        "diagramAlt": "moDon-H 산업용 허니넷 다이어그램"
+      },
+      "modonI": {
+        "whitelistDesc": "화이트리스트 기반 액세스 제어 및 차단 솔루션",
+        "rustLanguage": "Rust 언어",
+        "item1": "IoT/IIoT 디바이스에서 실행되는 악성 프로세스 및 바이너리 탐지 및 수집",
+        "item2": "특정 디렉토리를 실시간으로 모니터링하고 탐지 시 생성된 바이너리 덤프",
+        "item3": "악성으로 식별된 바이너리 차단",
+        "item4": "C2(Command and Control) 서버 연결 탐지 및 차단",
+        "item5": "IDX 관리 인터페이스를 통한 실시간 알림 및 맞춤형 정책 제공",
+        "item6": "레거시 시스템 및 20개 이상의 IoT CPU 아키텍처 및 운영체제 지원",
+        "architectureAlt": "moDon-I 아키텍처",
+        "feature1": {
+          "title": "1. 악성코드 탐지 및 비정상 프로세스 차단",
+          "desc": "실시간 프로세스 활동을 알려진 정상 프로세스의 화이트리스트와 비교하여 비정상 프로세스를 탐지"
+        },
+        "feature2": {
+          "title": "2. 파일/디렉토리 이상 탐지 차단",
+          "desc": "사용자 정의 경로를 모니터링하여 무단 파일 또는 디렉토리 생성, 수정 또는 삭제 활동을 탐지"
+        }
+      },
+      "modonW": {
+        "item1": "셀룰러 네트워크(3G, 4G, 5G)를 통한 휴대폰 및 IoT 디바이스 추적",
+        "item2": "정밀한 지리적 위치 파악으로 Wi-Fi 및 셀룰러 디바이스, 액세스 포인트, 라우터 및 IoT 장비 위치 추적",
+        "item3": "셀룰러 및 Wi-Fi 네트워크의 서비스 거부(DoS) 공격",
+        "item4": "식별 및 추적을 위한 IMSI 및 MAC 주소 획득",
+        "item5": "숨겨진 무선 디바이스(폰, 녹음기, 카메라, 라우터, 노트북 등) 탐지",
+        "item6": "통합 센서를 사용한 Iridium, Thuraya 및 IsatPhone Pro 위성 핸드셋의 동시 L-밴드 모니터링",
+        "item7": "독점적인 Webint 시스템(OSINT + SIGINT + Deep Web + SNS)에 무선 인텔리전스 통합",
+        "system1Alt": "moDon-W 시스템 1",
+        "system2Alt": "moDon-W 시스템 2",
+        "system3Alt": "moDon-W 시스템 3",
+        "system4Alt": "moDon-W 시스템 4"
+      },
+      "cyberTraining": {
+        "item1": "시설별 침투 테스트, 취약점 분석 및 교육 컨설팅",
+        "item2": "프로젝트 요구사항에 따른 독립적 또는 파트너 주도 참여",
+        "item3": "사이버 및 물리적 침투 테스트, 취약점 연구, 컴플라이언스 자문",
+        "item4": "보안 인식 및 전문 인력 교육"
+      },
+      "modonM": {
+        "needTitle": "군사 사이버보안의 필요성",
+        "need": {
+          "item1": "드론, 센서 및 통신 시스템은 주요 사이버 공격 대상",
+          "item2": "GPS 스푸핑 및 드론 해킹으로 인한 임무 실패 및 데이터 유출 증가",
+          "item3": "레거시 방어체계는 실시간, 복합적 위협에 취약",
+          "item4": "군사 시스템 및 네트워크를 위한 사전 예방적 보안이 필수"
+        },
+        "techTitle": "기술 및 역량",
+        "tech": {
+          "item1": "IoT 취약점 분석 및 해킹 방지",
+          "item1Sub": "(CCTV, 라우터, 드론, 다기능 장치, 로봇 등)",
+          "item2": "보안 드론 펌웨어 개발 및 분석",
+          "item2Sub": "격추된 임무 드론의 데이터 복구 방지를 위한 안티 포렌식 설계 포함",
+          "item3": "ARM, PPC, MIPS 등을 위한 멀티 플랫폼 분석 도구",
+          "item3Sub": "잠재적 취약점 평가를 위한 AI 기반 분석 사용",
+          "item4": "네트워크 및 인프라 보안 구현 (서비스 통합 프로젝트)",
+          "item5": "외국 보안 장비의 보안 평가",
+          "item5Sub": "무허가 및 미인증 수입 장치 포함",
+          "item6": "위성 통신 모니터링을 통한 CTI(사이버 위협 인텔리전스)",
+          "item6Sub": "국내 사용 내 위성 전화 활동 추적",
+          "item7": "THA(위협 헌팅 분석)",
+          "item7Sub": "비정상적이거나 새로운 위협 탐지"
+        },
+        "benefitsTitle": "기대 효과",
+        "benefits": {
+          "item1": "경량 에이전트가 안정적이고 지속적인 운영을 위한 실시간 이상 탐지 지원",
+          "item2": "펌웨어 및 데이터 암호화가 기밀 정보 유출을 소스에서 차단",
+          "item3": "AI 기반 대응이 제로데이 및 내부자 위협을 즉시 대응",
+          "item4": "방산 시장 준비를 위한 글로벌 사이버보안 표준(예: EU CRA) 준수"
+        }
+      },
+      "modonN": {
+        "item1": "기존 산업 환경에 영향을 주지 않고 배포 가능한 소형 네트워크 장치",
+        "item2": "산업 환경의 제약을 고려하여 직접 차단보다는 사전 탐지 및 조기 대응을 위해 설계",
+        "item3": "40개 이상의 산업 프로토콜 분석 지원",
+        "item4": "특정 사이트 요구사항에 맞춘 맞춤화 가능",
+        "item5": "네트워크 트래픽 실시간 모니터링",
+        "item6": "시각적 대시보드 및 이상 이력 관리 도구",
+        "item7": "비정상 트래픽 탐지 시 메신저 또는 이메일을 통한 즉시 알림 전송",
+        "dashboard1Alt": "moDon-N 대시보드 1",
+        "dashboard2Alt": "moDon-N 대시보드 2",
+        "keyFeaturesTitle": "주요 기능",
+        "keyFeatures": {
+          "item1": "이상 행동 탐지 및 실시간 대응",
+          "item2": "산업 네트워크 프로토콜 지원",
+          "item3": "기존 네트워크 인프라와의 호환성",
+          "item4": "네트워크 트래픽 로깅 및 관리",
+          "item5": "알림 및 통지 시스템",
+          "item6": "데이터 시각화 대시보드"
+        },
+        "deploymentTitle": "배포 이점",
+        "deployment": {
+          "item1": "향상된 실시간 보안",
+          "item2": "위험 노출 최소화",
+          "item3": "운영 효율성 향상",
+          "item4": "법률 및 규정 준수"
+        }
+      },
+      "satellite": {
+        "mainDesc": "위성 영상 기반 화물 수요 모델링 및 예측",
+        "dataTitle": "데이터",
+        "data": {
+          "item1": "Maxar, Planet Labs, Arlula의 위성 이미지",
+          "item2": "항공 화물 창고 데이터",
+          "item3": "국제 물류 회사 데이터"
+        },
+        "plane1Alt": "위성 항공기 1",
+        "plane2Alt": "위성 항공기 2", 
+        "alignmentAlt": "딥러닝 기반 정렬",
+        "poseAlt": "자세 추정"
+      }
+    }
+  },
+  "common": {
+    "close": "닫기"
+  }
+}

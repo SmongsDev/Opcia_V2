@@ -1,9 +1,11 @@
 // src/components/Sections/HeroSection.jsx
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
   const [isHovered, setIsHovered] = React.useState(false);
+  const { t } = useTranslation();
 
   return (
     <section id="home" className="min-h-screen relative overflow-hidden">
@@ -25,7 +27,7 @@ const HeroSection = () => {
             <span className="text-yellow-400">O</span>peration : <span className="text-yellow-400">C</span>yber Infiltration <span className="text-yellow-400">A</span>gency
           </h2>
           <p className="text-base lg:text-lg text-gray-300 leading-relaxed max-w-3xl mb-12">
-            We provide penetration testing and vulnerability assessment services for industrial and loT systems, focusing on critical infrastructure such as nuclear power plants, smart factories, water treatment facilities, semiconductor manufacturing facilities, and military sites. Our security solutions are designed to bridge IT, loT, and OT technologies, ensuring comprehensive protection across complex operational environments.
+            {t('hero.description')}
           </p>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
@@ -35,7 +37,7 @@ const HeroSection = () => {
             onMouseLeave={() => setIsHovered(false)}
             >
             <span>
-                {isHovered ? 'Scroll Down' : 'Explore More'}
+                {isHovered ? t('hero.scrollDown') : t('hero.exploreMore')}
             </span>
             <ArrowDown className="w-5 h-5 transition-transform duration-300" />
             </div>

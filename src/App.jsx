@@ -11,4 +11,6 @@ function App() {
   );
 }
 
+// i18n 적용은 각 컴포넌트에서 처리됨
+
 export default App;

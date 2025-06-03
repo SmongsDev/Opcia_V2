@@ -1,380 +1,394 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-const descriptions = {
-  "Consulting": "Facility-specific consulting on penetration testing, vulnerability analysis, and training",
-  "moDon-D": "Drone Anti-Forensics",
-  "moDon-H": "Industrial Honeynet",
-  "moDon-I": "loT Monitoring and Blocking Solution",
-  "moDon-W": "Wireless Communication Intelligence",
-  "Cyber Training Platform": "Built on industrial control systems (ICS) and industrial network environments",
-  "moDon-M": "Military Cybersecurity Services",
-  "moDon-N": "Network Traffic and Log Anomaly Detection & Analysis",
-  "Satellite Image Analysis": "Satellite Vision based Cargo Demand Modeling & Prediction"
-};
+const SolutionSection = ({ current, setCurrent }) => {
+  const { t } = useTranslation();
 
-// 상세 내용 렌더 함수 (v1 오버레이 내용 그대로)
-function renderDetailContent(title) {
-  // Consulting
-  if (title === "Consulting") {
-    return (
-      <div>
-        <ul className="space-y-3 text-base md:text-xl text-black list-disc pl-6">
-          <li>Facility-specific consulting on penetration testing, vulnerability analysis, and training</li>
-          <li>Independent or partner-led engagements based on project needs</li>
-          <li>Cyber &amp; physical penetration testing, vulnerability research, compliance advisory</li>
-          <li>Security awareness and professional workforce training</li>
-        </ul>
-      </div>
-    );
-  }
-  // moDon-D
-  if (title === "moDon-D") {
-    return (
-      <div>
-        <ul className="mb-6 space-y-4 text-base md:text-xl">
-          <li>
-            <span className="font-bold text-black">Drone Anti-Forensics:</span>
-            <span className="ml-2 text-gray-800">
-              A set of techniques designed to evade detection or hinder investigation by manipulating or concealing data collected by drones. Typically used to obscure illegal drone activities and disrupt forensic analysis.
-            </span>
-          </li>
-          <li>
-            <span className="font-bold text-black">Encrypted Data Types:</span>
-            <span className="ml-2 text-gray-800">
-              Includes video, image, GPS information, and log data related to sensor activity
-            </span>
-            <ol className="list-decimal pl-6 mt-2 space-y-1 text-gray-800">
-              <li>Software-based data encryption</li>
-              <li>Optimized encryption targeting specific data types</li>
-              <li>Hardware-based encryption</li>
-              <li>Power-efficient design for minimal battery consumption</li>
-            </ol>
-            <div className="border-l-2 border-gray-400 pl-4 mt-4 text-gray-700 text-base">
-              Firmware-level encryption + hardware-integrated security = end-to-end protection covering camera modules, sensors, and system logs<br />
-              Lightweight and power-optimized for minimal battery consumption &rarr; <span className="text-yellow-400 font-semibold">ModOn-D is ready for real-world deployment.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    );
-  }
-  // moDon-H
-  if (title === "moDon-H") {
-    return (
-      <div>
-        <ul className="mb-8 space-y-3 text-base md:text-xl text-black list-disc pl-6">
-          <li>Diverts attacks away from real systems using actual industrial equipment</li>
-          <li>Built with PLCs and HMIs to simulate physical control environments</li>
-          <li>Segmented networks and intentional vulnerabilities attract and monitor attackers</li>
-          <li>Attack patterns are analyzed to strengthen real-world defenses</li>
-        </ul>
-        <div className="flex justify-center mb-2">
-          <img
-            loading="lazy"
-            src="images/solution/modon-h-diagram.webp"
-            alt="moDon-H Industrial Honeynet Diagram"
-            className="rounded-lg shadow-lg bg-gray-100 object-contain"
-            style={{ maxHeight: 320, maxWidth: "100%" }}
-          />
-        </div>
-      </div>
-    );
-  }
-  // moDon-I
-  if (title === "moDon-I") {
-    return (
-      <div>
-        <div className="mb-6 text-base md:text-xl">
-          <span className="text-gray-700">
-            Whitelist-based access control and blocking solution developed in{' '}
-            <span className="underline text-orange-400 font-semibold">Rust Language</span>
-          </span>
-        </div>
-        <ul className="mb-8 space-y-2 list-disc pl-6 text-base text-black">
-          <li>Detects and collects malicious processes and binaries running on IoT/IIoT devices</li>
-          <li>Monitors specific directories in real time and dumps created binaries upon detection</li>
-          <li>Blocks binaries identified as malicious</li>
-          <li>Detects and blocks connections to C2 (Command and Control) servers</li>
-          <li>Provides real-time alerts and customizable policies via the IDX management interface</li>
-          <li>Supports legacy systems and over 20 IoT CPU architectures and operating systems</li>
-        </ul>
-        <div className="flex flex-col md:flex-row gap-6 mb-8 items-center justify-center">
-          <img
-            loading="lazy"
-            src="images/solution/modon-i-diagram.webp"
-            alt="moDon-I Architecture"
-            className="rounded-lg shadow-lg object-contain w-full md:w-2/3 bg-gray-100"
-            style={{ maxHeight: 220 }}
-          />
-        </div>
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="flex-1">
-            <div className="font-bold mb-2">1. Malware and Detection & Blocking Anomalous Process</div>
-            <div className="border-l-4 border-yellow-400 pl-4 text-base mb-4">
-              Detects abnormal processes by comparing real-time process activity against a whitelist of known legitimate processes
-            </div>
-          </div>
-          <div className="flex-1">
-            <div className="font-bold mb-2">2. File/Directory Anomaly Detection Blocking</div>
-            <div className="border-l-4 border-yellow-400 pl-4 text-base mb-4">
-              Monitors user-defined paths to detect unauthorized file or directory creation, modification, or deletion activities
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-  // moDon-W
-  if (title === "moDon-W") {
-    return (
-      <div>
-        <ul className="mb-6 space-y-2 text-base md:text-xl list-disc pl-6 text-black">
-          <li>Tracking mobile phones and IoT devices over cellular networks (3G, 4G, 5G)</li>
-          <li>Locating Wi-Fi &amp; cellular devices, access points, routers, and IoT equipment with precise geolocation</li>
-          <li>Denial of service (DoS) on cellular and Wi-Fi networks</li>
-          <li>IMSI and MAC address acquisition for identification and tracking</li>
-          <li>Detection of hidden wireless devices (phones, recorders, cameras, routers, laptops, etc.)</li>
-          <li>Simultaneous L-band monitoring of Iridium, Thuraya, and IsatPhone Pro satellite handsets using a unified sensor</li>
-          <li>Integration of wireless intelligence into proprietary Webint system (OSINT + SIGINT + Deep Web + SNS)</li>
-        </ul>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-          <img
-            loading="lazy"
-            src="images/solution/modon-w-1.webp"
-            alt="moDon-W system 1"
-            className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
-            style={{ objectFit: "cover" }}
-          />
-          <img
-            loading="lazy"
-            src="images/solution/modon-w-2.webp"
-            alt="moDon-W system 2"
-            className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
-            style={{ objectFit: "cover" }}
-          />
-          <img
-            loading="lazy"
-            src="images/solution/modon-w-3.webp"
-            alt="moDon-W system 3"
-            className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
-            style={{ objectFit: "cover" }}
-          />
-          <img
-            loading="lazy"
-            src="images/solution/modon-w-4.webp"
-            alt="moDon-W system 4"
-            className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-      </div>
-    );
-  }
-  // Cyber Training Platform
-  if (title === "Cyber Training Platform") {
-    return (
-      <div>
-        <ul className="space-y-3 text-base md:text-xl text-black list-disc pl-6">
-          <li>Facility-specific consulting on penetration testing, vulnerability analysis, and training</li>
-          <li>Independent or partner-led engagements based on project needs</li>
-          <li>Cyber &amp; physical penetration testing, vulnerability research, compliance advisory</li>
-          <li>Security awareness and professional workforce training</li>
-        </ul>
-      </div>
-    );
-  }
-  // moDon-M
-  if (title === "moDon-M") {
-    return (
-      <div>
-        <div className="mb-4">
-          <div className="font-semibold text-base md:text-xl text-black mb-2">Need for Military Cybersecurity</div>
-          <ul className="list-disc pl-6 space-y-1 text-base md:text-lg text-gray-800">
-            <li>Drones, sensors, and comms systems are key cyber targets</li>
-            <li>More mission failures and data leaks from GPS spoofing &amp; drone hacks</li>
-            <li>Legacy defenses struggle with real-time, complex threats</li>
-            <li>Proactive security is essential for military systems and networks</li>
+  // descriptions를 i18n으로 변경
+  const descriptions = useMemo(() => ({
+    "Consulting": t('solution.descriptions.consulting'),
+    "moDon-D": t('solution.descriptions.modonD'),
+    "moDon-H": t('solution.descriptions.modonH'),
+    "moDon-I": t('solution.descriptions.modonI'),
+    "moDon-W": t('solution.descriptions.modonW'),
+    "Cyber Training Platform": t('solution.descriptions.cyberTraining'),
+    "moDon-M": t('solution.descriptions.modonM'),
+    "moDon-N": t('solution.descriptions.modonN'),
+    "Satellite Image Analysis": t('solution.descriptions.satellite')
+  }), [t]);
+
+  // 모바일 감지 함수
+  const isMobile = () => {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  };
+
+  // 디바이스에 따른 스크롤 duration 결정
+  const getScrollDuration = () => {
+    if (isMobile()) {
+      return 600; // 모바일: 0.6초
+    }
+    return 1000; // 데스크톱: 1초
+  };
+
+  // 상세 내용 렌더 함수 (i18n 적용)
+  function renderDetailContent(title) {
+    // Consulting
+    if (title === t('solution.consulting')) {
+      return (
+        <div>
+          <ul className="space-y-3 text-base md:text-xl text-black list-disc pl-6">
+            <li>{t('solution.details.consulting.item1')}</li>
+            <li>{t('solution.details.consulting.item2')}</li>
+            <li>{t('solution.details.consulting.item3')}</li>
+            <li>{t('solution.details.consulting.item4')}</li>
           </ul>
         </div>
-        <div className="mb-4">
-          <div className="font-semibold text-base md:text-xl text-black mb-2">Technologies &amp; Capabilities</div>
-          <ul className="list-disc pl-6 space-y-2 text-base md:text-lg text-gray-800">
+      );
+    }
+    // moDon-D
+    if (title === t('solution.modonD')) {
+      return (
+        <div>
+          <ul className="mb-6 space-y-4 text-base md:text-xl">
             <li>
-              IoT vulnerability analysis and hacking prevention
-              <ul className="list-disc pl-6 text-sm mt-1">
-                <li>(CCTV, routers, drones, multifunction devices, robots, etc.)</li>
-              </ul>
+              <span className="font-bold text-black">{t('solution.details.modonD.droneAntiForensics')}:</span>
+              <span className="ml-2 text-gray-800">
+                {t('solution.details.modonD.droneAntiForensicsDesc')}
+              </span>
             </li>
             <li>
-              Development and analysis of secure drone firmware
-              <ul className="list-disc pl-6 text-sm mt-1">
-                <li>Includes anti-forensics design to prevent data recovery from downed mission drones</li>
-              </ul>
-            </li>
-            <li>
-              Multi-platform analysis tools for ARM, PPC, MIPS, etc.
-              <ul className="list-disc pl-6 text-sm mt-1">
-                <li>Uses AI-powered analysis to assess potential vulnerabilities</li>
-              </ul>
-            </li>
-            <li>Network and infrastructure security implementation (service integration projects)</li>
-            <li>
-              Security assessment of foreign security equipment
-              <ul className="list-disc pl-6 text-sm mt-1">
-                <li>Including unauthorized and uncertified imported devices</li>
-              </ul>
-            </li>
-            <li>
-              CTI (Cyber Threat Intelligence) via satellite communication monitoring
-              <ul className="list-disc pl-6 text-sm mt-1">
-                <li>Tracking satellite phone activity within domestic use</li>
-              </ul>
-            </li>
-            <li>
-              THA (Threat Hunting Analysis)
-              <ul className="list-disc pl-6 text-sm mt-1">
-                <li>Detection of abnormal or emerging threats</li>
-              </ul>
+              <span className="font-bold text-black">{t('solution.details.modonD.encryptedDataTypes')}:</span>
+              <span className="ml-2 text-gray-800">
+                {t('solution.details.modonD.encryptedDataTypesDesc')}
+              </span>
+              <ol className="list-decimal pl-6 mt-2 space-y-1 text-gray-800">
+                <li>{t('solution.details.modonD.encryption.item1')}</li>
+                <li>{t('solution.details.modonD.encryption.item2')}</li>
+                <li>{t('solution.details.modonD.encryption.item3')}</li>
+                <li>{t('solution.details.modonD.encryption.item4')}</li>
+              </ol>
+              <div className="border-l-2 border-gray-400 pl-4 mt-4 text-gray-700 text-base">
+                {t('solution.details.modonD.firmwareDesc')}<br />
+                {t('solution.details.modonD.lightweightDesc')} &rarr; <span className="text-yellow-400 font-semibold">{t('solution.details.modonD.readyForDeployment')}</span>
+              </div>
             </li>
           </ul>
         </div>
-        <div className="mb-2">
-          <div className="font-semibold text-base md:text-xl text-black mb-2">Expected Benefits</div>
-          <ul className="list-disc pl-6 space-y-1 text-base md:text-lg text-gray-800">
-            <li>Lightweight agent enables real-time anomaly detection for stable, continuous operation</li>
-            <li>Firmware and data encryption blocks classified info leaks at the source</li>
-            <li>AI-driven response counters zero-day and insider threats instantly</li>
-            <li>Meets global cybersecurity standards (e.g., EU CRA) for defense market readiness</li>
+      );
+    }
+    // moDon-H
+    if (title === t('solution.modonH')) {
+      return (
+        <div>
+          <ul className="mb-8 space-y-3 text-base md:text-xl text-black list-disc pl-6">
+            <li>{t('solution.details.modonH.item1')}</li>
+            <li>{t('solution.details.modonH.item2')}</li>
+            <li>{t('solution.details.modonH.item3')}</li>
+            <li>{t('solution.details.modonH.item4')}</li>
           </ul>
-        </div>
-      </div>
-    );
-  }
-  // moDon-N
-  if (title === "moDon-N") {
-    return (
-      <div>
-        <ul className="mb-6 space-y-2 text-base md:text-xl list-disc pl-6 text-black">
-          <li>Compact network devices deployable without impacting existing industrial environments</li>
-          <li>Designed for proactive detection and early response rather than direct blocking, considering the constraints of industrial environments</li>
-          <li>Supports analysis of over 40 industrial protocols</li>
-          <li>Customizable to fit specific site requirements</li>
-          <li>Real-time monitoring of network traffic</li>
-          <li>Visual dashboards and anomaly history management tools</li>
-          <li>Immediate alert transmission via messenger or email upon abnormal traffic detection</li>
-        </ul>
-        <div className="flex flex-col md:flex-row gap-8 mb-8">
-          <div className="flex-1 flex flex-col">
+          <div className="flex justify-center mb-2">
             <img
               loading="lazy"
-              src="images/solution/modon-n-1.webp"
-              alt="moDon-N Dashboard 1"
-              className="rounded-lg shadow-lg object-contain bg-gray-100 mb-4"
-              style={{ maxHeight: 220, width: "100%", maxWidth: 380 }}
+              src="images/solution/modon-h-diagram.webp"
+              alt={t('solution.details.modonH.diagramAlt')}
+              className="rounded-lg shadow-lg bg-gray-100 object-contain"
+              style={{ maxHeight: 320, maxWidth: "100%" }}
             />
-            <div className="font-bold text-lg mb-2 text-black">Key Features</div>
-            <ol className="list-decimal pl-6 space-y-1 text-base text-gray-800">
-              <li>Anomaly behavior detection and real-time response</li>
-              <li>Support for industrial network protocols</li>
-              <li>Compatibility with existing network infrastructure</li>
-              <li>Network traffic logging and management</li>
-              <li>Alert and notification system</li>
-              <li>Data visualization dashboard</li>
-            </ol>
           </div>
-          <div className="flex-1 flex flex-col">
+        </div>
+      );
+    }
+    // moDon-I
+    if (title === t('solution.modonI')) {
+      return (
+        <div>
+          <div className="mb-6 text-base md:text-xl">
+            <span className="text-gray-700">
+              {t('solution.details.modonI.whitelistDesc')}{' '}
+              <span className="underline text-orange-400 font-semibold">{t('solution.details.modonI.rustLanguage')}</span>
+            </span>
+          </div>
+          <ul className="mb-8 space-y-2 list-disc pl-6 text-base text-black">
+            <li>{t('solution.details.modonI.item1')}</li>
+            <li>{t('solution.details.modonI.item2')}</li>
+            <li>{t('solution.details.modonI.item3')}</li>
+            <li>{t('solution.details.modonI.item4')}</li>
+            <li>{t('solution.details.modonI.item5')}</li>
+            <li>{t('solution.details.modonI.item6')}</li>
+          </ul>
+          <div className="flex flex-col md:flex-row gap-6 mb-8 items-center justify-center">
             <img
               loading="lazy"
-              src="images/solution/modon-n-2.webp"
-              alt="moDon-N Dashboard 2"
-              className="rounded-lg shadow-lg object-contain bg-gray-100 mb-6"
-              style={{ maxHeight: 220, width: "100%", maxWidth: 380 }}
+              src="images/solution/modon-i-diagram.webp"
+              alt={t('solution.details.modonI.architectureAlt')}
+              className="rounded-lg shadow-lg object-contain w-full md:w-2/3 bg-gray-100"
+              style={{ maxHeight: 220 }}
             />
-            <div className="font-bold text-lg mb-2 text-black">Deployment Benefits</div>
-            <ul className="list-disc pl-6 space-y-1 text-base text-gray-800">
-              <li>Enhanced Real-Time Security</li>
-              <li>Minimized Risk Exposure</li>
-              <li>Improved Operational Efficiency</li>
-              <li>Compliance with Laws & Regulations</li>
+          </div>
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex-1">
+              <div className="font-bold mb-2">{t('solution.details.modonI.feature1.title')}</div>
+              <div className="border-l-4 border-yellow-400 pl-4 text-base mb-4">
+                {t('solution.details.modonI.feature1.desc')}
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="font-bold mb-2">{t('solution.details.modonI.feature2.title')}</div>
+              <div className="border-l-4 border-yellow-400 pl-4 text-base mb-4">
+                {t('solution.details.modonI.feature2.desc')}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    // moDon-W
+    if (title === t('solution.modonW')) {
+      return (
+        <div>
+          <ul className="mb-6 space-y-2 text-base md:text-xl list-disc pl-6 text-black">
+            <li>{t('solution.details.modonW.item1')}</li>
+            <li>{t('solution.details.modonW.item2')}</li>
+            <li>{t('solution.details.modonW.item3')}</li>
+            <li>{t('solution.details.modonW.item4')}</li>
+            <li>{t('solution.details.modonW.item5')}</li>
+            <li>{t('solution.details.modonW.item6')}</li>
+            <li>{t('solution.details.modonW.item7')}</li>
+          </ul>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <img
+              loading="lazy"
+              src="images/solution/modon-w-1.webp"
+              alt={t('solution.details.modonW.system1Alt')}
+              className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
+              style={{ objectFit: "cover" }}
+            />
+            <img
+              loading="lazy"
+              src="images/solution/modon-w-2.webp"
+              alt={t('solution.details.modonW.system2Alt')}
+              className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
+              style={{ objectFit: "cover" }}
+            />
+            <img
+              loading="lazy"
+              src="images/solution/modon-w-3.webp"
+              alt={t('solution.details.modonW.system3Alt')}
+              className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
+              style={{ objectFit: "cover" }}
+            />
+            <img
+              loading="lazy"
+              src="images/solution/modon-w-4.webp"
+              alt={t('solution.details.modonW.system4Alt')}
+              className="rounded-lg shadow-lg object-cover w-full h-36 bg-gray-100"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
+      );
+    }
+    // Cyber Training Platform
+    if (title === t('solution.cyberTraining')) {
+      return (
+        <div>
+          <ul className="space-y-3 text-base md:text-xl text-black list-disc pl-6">
+            <li>{t('solution.details.cyberTraining.item1')}</li>
+            <li>{t('solution.details.cyberTraining.item2')}</li>
+            <li>{t('solution.details.cyberTraining.item3')}</li>
+            <li>{t('solution.details.cyberTraining.item4')}</li>
+          </ul>
+        </div>
+      );
+    }
+    // moDon-M
+    if (title === t('solution.modonM')) {
+      return (
+        <div>
+          <div className="mb-4">
+            <div className="font-semibold text-base md:text-xl text-black mb-2">{t('solution.details.modonM.needTitle')}</div>
+            <ul className="list-disc pl-6 space-y-1 text-base md:text-lg text-gray-800">
+              <li>{t('solution.details.modonM.need.item1')}</li>
+              <li>{t('solution.details.modonM.need.item2')}</li>
+              <li>{t('solution.details.modonM.need.item3')}</li>
+              <li>{t('solution.details.modonM.need.item4')}</li>
             </ul>
           </div>
-        </div>
-      </div>
-    );
-  }
-  // Satellite Image Analysis
-  if (title === "Satellite Image Analysis") {
-    return (
-      <div>
-        <ul className="mb-4 space-y-2 text-base md:text-xl text-black">
-          <li>Satellite Vision based Cargo Demand Modeling &amp; Prediction</li>
-          <li>
-            <span className="font-semibold text-black">Data:</span>
-            <ul className="list-disc pl-6 mt-1 space-y-1 text-gray-800">
+          <div className="mb-4">
+            <div className="font-semibold text-base md:text-xl text-black mb-2">{t('solution.details.modonM.techTitle')}</div>
+            <ul className="list-disc pl-6 space-y-2 text-base md:text-lg text-gray-800">
               <li>
-                Satellite Image from Maxar, Planet Labs, Arlula
+                {t('solution.details.modonM.tech.item1')}
+                <ul className="list-disc pl-6 text-sm mt-1">
+                  <li>{t('solution.details.modonM.tech.item1Sub')}</li>
+                </ul>
               </li>
-              <li>Air Cargo Warehouses Data</li>
-              <li>International Logistics Company Data</li>
+              <li>
+                {t('solution.details.modonM.tech.item2')}
+                <ul className="list-disc pl-6 text-sm mt-1">
+                  <li>{t('solution.details.modonM.tech.item2Sub')}</li>
+                </ul>
+              </li>
+              <li>
+                {t('solution.details.modonM.tech.item3')}
+                <ul className="list-disc pl-6 text-sm mt-1">
+                  <li>{t('solution.details.modonM.tech.item3Sub')}</li>
+                </ul>
+              </li>
+              <li>{t('solution.details.modonM.tech.item4')}</li>
+              <li>
+                {t('solution.details.modonM.tech.item5')}
+                <ul className="list-disc pl-6 text-sm mt-1">
+                  <li>{t('solution.details.modonM.tech.item5Sub')}</li>
+                </ul>
+              </li>
+              <li>
+                {t('solution.details.modonM.tech.item6')}
+                <ul className="list-disc pl-6 text-sm mt-1">
+                  <li>{t('solution.details.modonM.tech.item6Sub')}</li>
+                </ul>
+              </li>
+              <li>
+                {t('solution.details.modonM.tech.item7')}
+                <ul className="list-disc pl-6 text-sm mt-1">
+                  <li>{t('solution.details.modonM.tech.item7Sub')}</li>
+                </ul>
+              </li>
             </ul>
-          </li>
-        </ul>
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <img
-            loading="lazy"
-            src="images/solution/satellite-plane-2.webp"
-            alt="Satellite plane 1"
-            className="rounded-lg shadow-lg object-cover w-full h-48 bg-gray-100"
-            style={{ objectFit: "cover" }}
-          />
-          <img
-            loading="lazy"
-            src="images/solution/satellite-plane-1.webp"
-            alt="Satellite plane 2"
-            className="rounded-lg shadow-lg object-cover w-full h-48 bg-gray-100"
-            style={{ objectFit: "cover" }}
-          />
+          </div>
+          <div className="mb-2">
+            <div className="font-semibold text-base md:text-xl text-black mb-2">{t('solution.details.modonM.benefitsTitle')}</div>
+            <ul className="list-disc pl-6 space-y-1 text-base md:text-lg text-gray-800">
+              <li>{t('solution.details.modonM.benefits.item1')}</li>
+              <li>{t('solution.details.modonM.benefits.item2')}</li>
+              <li>{t('solution.details.modonM.benefits.item3')}</li>
+              <li>{t('solution.details.modonM.benefits.item4')}</li>
+            </ul>
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex flex-col items-center">
+      );
+    }
+    // moDon-N
+    if (title === t('solution.modonN')) {
+      return (
+        <div>
+          <ul className="mb-6 space-y-2 text-base md:text-xl list-disc pl-6 text-black">
+            <li>{t('solution.details.modonN.item1')}</li>
+            <li>{t('solution.details.modonN.item2')}</li>
+            <li>{t('solution.details.modonN.item3')}</li>
+            <li>{t('solution.details.modonN.item4')}</li>
+            <li>{t('solution.details.modonN.item5')}</li>
+            <li>{t('solution.details.modonN.item6')}</li>
+            <li>{t('solution.details.modonN.item7')}</li>
+          </ul>
+          <div className="flex flex-col md:flex-row gap-8 mb-8">
+            <div className="flex-1 flex flex-col">
+              <img
+                loading="lazy"
+                src="images/solution/modon-n-1.webp"
+                alt={t('solution.details.modonN.dashboard1Alt')}
+                className="rounded-lg shadow-lg object-contain bg-gray-100 mb-4"
+                style={{ maxHeight: 220, width: "100%", maxWidth: 380 }}
+              />
+              <div className="font-bold text-lg mb-2 text-black">{t('solution.details.modonN.keyFeaturesTitle')}</div>
+              <ol className="list-decimal pl-6 space-y-1 text-base text-gray-800">
+                <li>{t('solution.details.modonN.keyFeatures.item1')}</li>
+                <li>{t('solution.details.modonN.keyFeatures.item2')}</li>
+                <li>{t('solution.details.modonN.keyFeatures.item3')}</li>
+                <li>{t('solution.details.modonN.keyFeatures.item4')}</li>
+                <li>{t('solution.details.modonN.keyFeatures.item5')}</li>
+                <li>{t('solution.details.modonN.keyFeatures.item6')}</li>
+              </ol>
+            </div>
+            <div className="flex-1 flex flex-col">
+              <img
+                loading="lazy"
+                src="images/solution/modon-n-2.webp"
+                alt={t('solution.details.modonN.dashboard2Alt')}
+                className="rounded-lg shadow-lg object-contain bg-gray-100 mb-6"
+                style={{ maxHeight: 220, width: "100%", maxWidth: 380 }}
+              />
+              <div className="font-bold text-lg mb-2 text-black">{t('solution.details.modonN.deploymentTitle')}</div>
+              <ul className="list-disc pl-6 space-y-1 text-base text-gray-800">
+                <li>{t('solution.details.modonN.deployment.item1')}</li>
+                <li>{t('solution.details.modonN.deployment.item2')}</li>
+                <li>{t('solution.details.modonN.deployment.item3')}</li>
+                <li>{t('solution.details.modonN.deployment.item4')}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    // Satellite Image Analysis
+    if (title === t('solution.satellite')) {
+      return (
+        <div>
+          <ul className="mb-4 space-y-2 text-base md:text-xl text-black">
+            <li>{t('solution.details.satellite.mainDesc')}</li>
+            <li>
+              <span className="font-semibold text-black">{t('solution.details.satellite.dataTitle')}:</span>
+              <ul className="list-disc pl-6 mt-1 space-y-1 text-gray-800">
+                <li>{t('solution.details.satellite.data.item1')}</li>
+                <li>{t('solution.details.satellite.data.item2')}</li>
+                <li>{t('solution.details.satellite.data.item3')}</li>
+              </ul>
+            </li>
+          </ul>
+          <div className="grid grid-cols-2 gap-4 mb-4">
             <img
               loading="lazy"
-              src="images/solution/satellite-align.webp"
-              alt="Deep Learning-based alignment"
+              src="images/solution/satellite-plane-2.webp"
+              alt={t('solution.details.satellite.plane1Alt')}
+              className="rounded-lg shadow-lg object-cover w-full h-48 bg-gray-100"
+              style={{ objectFit: "cover" }}
+            />
+            <img
+              loading="lazy"
+              src="images/solution/satellite-plane-1.webp"
+              alt={t('solution.details.satellite.plane2Alt')}
+              className="rounded-lg shadow-lg object-cover w-full h-48 bg-gray-100"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col items-center">
+              <img
+                loading="lazy"
+                src="images/solution/satellite-align.webp"
+                alt={t('solution.details.satellite.alignmentAlt')}
+                className="rounded-lg shadow-lg object-contain w-full bg-gray-100"
+                style={{ maxHeight: 200 }}
+              />
+            </div>
+            <img
+              loading="lazy"
+              src="images/solution/satellite-pose.webp"
+              alt={t('solution.details.satellite.poseAlt')}
               className="rounded-lg shadow-lg object-contain w-full bg-gray-100"
               style={{ maxHeight: 200 }}
             />
           </div>
-          <img
-            loading="lazy"
-            src="images/solution/satellite-pose.webp"
-            alt="Pose estimation"
-            className="rounded-lg shadow-lg object-contain w-full bg-gray-100"
-            style={{ maxHeight: 200 }}
-          />
         </div>
-      </div>
-    );
+      );
+    }
+    // fallback
+    return null;
   }
-  // fallback
-  return null;
-}
 
-const SolutionSection = () => {
   const solutions = useMemo(() => [
-    { title: "Consulting", width: "700px", image: "images/solution/consulting.webp" },
-    { title: "moDon-D", width: "865px", featured: true, image: "images/solution/modon-d.webp" },
-    { title: "moDon-H", width: "717px", image: "images/solution/modon-h.webp" },
-    { title: "moDon-I", width: "807px", image: "images/solution/modon-i.webp" },
-    { title: "moDon-W", width: "613px", image: "images/solution/modon-w.webp" },
-    { title: "Cyber Training Platform", width: "491px", image: "images/solution/cyber-training.webp" },
-    { title: "moDon-M", width: "666px", image: "images/solution/modon-m.webp" },
-    { title: "moDon-N", width: "483px", image: "images/solution/modon-n.webp" },
-    { title: "Satellite Image Analysis", width: "530px", featured: true, image: "images/solution/satellite-analysis.webp" }
-  ], []);
+    { title: t('solution.consulting'), width: "700px", image: "images/solution/consulting.webp" },
+    { title: t('solution.modonD'), width: "865px", featured: true, image: "images/solution/modon-d.webp" },
+    { title: t('solution.modonH'), width: "717px", image: "images/solution/modon-h.webp" },
+    { title: t('solution.modonI'), width: "807px", image: "images/solution/modon-i.webp" },
+    { title: t('solution.modonW'), width: "613px", image: "images/solution/modon-w.webp" },
+    { title: t('solution.cyberTraining'), width: "491px", image: "images/solution/cyber-training.webp" },
+    { title: t('solution.modonM'), width: "666px", image: "images/solution/modon-m.webp" },
+    { title: t('solution.modonN'), width: "483px", image: "images/solution/modon-n.webp" },
+    { title: t('solution.satellite'), width: "530px", featured: true, image: "images/solution/satellite-analysis.webp" }
+  ], [t]);
 
-  const [current, setCurrent] = useState(0);
   const [showDetail, setShowDetail] = useState(false); // 애니메이션용
   const [isDetailVisible, setIsDetailVisible] = useState(false); // 실제 DOM 표시
 
@@ -390,16 +404,24 @@ const SolutionSection = () => {
       : 1 - Math.pow(-2 * t + 2, 3) / 2;
   }
 
-  // 더 부드러운 slowScrollTo
-  function slowScrollTo(targetY, duration = 1000, callback) {
+  // 개선된 slowScrollTo 함수 - 디바이스별 최적화
+  function slowScrollTo(targetY, duration = null, callback) {
+    // duration이 명시적으로 전달되지 않으면 자동으로 결정
+    const actualDuration = duration || getScrollDuration();
+    
     const startY = window.scrollY;
     const diff = targetY - startY;
+    
+    // 스크롤 거리가 짧으면 duration을 더 줄임
+    const scrollDistance = Math.abs(diff);
+    const adjustedDuration = scrollDistance < 500 ? actualDuration * 0.7 : actualDuration;
+    
     let start;
 
     function step(timestamp) {
       if (!start) start = timestamp;
       const time = timestamp - start;
-      const percent = Math.min(time / duration, 1);
+      const percent = Math.min(time / adjustedDuration, 1);
       const eased = easeInOutCubic(percent);
       window.scrollTo(0, startY + diff * eased);
       if (percent < 1) {
@@ -411,15 +433,14 @@ const SolutionSection = () => {
     window.requestAnimationFrame(step);
   }
 
-
   // 상세 열기
   const handleImageClick = () => {
     setIsDetailVisible(true);
     setTimeout(() => setShowDetail(true), 10); // mount 후 애니메이션 트리거
     setTimeout(() => {
       if (detailRef.current) {
-        const y = detailRef.current.getBoundingClientRect().top + window.scrollY - 100;
-        slowScrollTo(y, 1000);
+        const y = detailRef.current.getBoundingClientRect().top + window.scrollY - (isMobile() ? 60 : 100);
+        slowScrollTo(y); // 자동으로 디바이스에 맞는 duration 적용
       }
     }, 100);
   };
@@ -429,8 +450,8 @@ const SolutionSection = () => {
     setShowDetail(false); // 애니메이션 시작
     setTimeout(() => {
       if (headerRef.current) {
-        const y = headerRef.current.getBoundingClientRect().top + window.scrollY - 80;
-        slowScrollTo(y, 1000, () => {
+        const y = headerRef.current.getBoundingClientRect().top + window.scrollY - (isMobile() ? 40 : 80);
+        slowScrollTo(y, null, () => { // 자동으로 디바이스에 맞는 duration 적용
           setIsDetailVisible(false); // 스크롤 끝난 후 DOM 제거
         });
       } else {
@@ -445,7 +466,7 @@ const SolutionSection = () => {
         {/* Header */}
         <div ref={headerRef} className="w-full flex justify-start mb-16">
           <h2 className="font-alata text-4xl sm:text-6xl lg:text-[75px] text-black tracking-[2px] leading-tight">
-            Solution
+            {t('nav.solution')}
           </h2>
         </div>
 
@@ -462,7 +483,7 @@ const SolutionSection = () => {
                 sm:-left-3 md:-left-6 lg:-left-7 xl:-left-24 2xl:-left-32
                 shadow
               "
-              aria-label="Previous"
+              aria-label={t('solution.prev')}
             >
               <ArrowLeft className="w-6 h-6 sm:w-7 sm:h-7" />
             </button>
@@ -545,7 +566,7 @@ const SolutionSection = () => {
                 sm:-right-3 md:-right-6 lg:-right-7 xl:-right-24 2xl:-right-32
                 shadow
               "
-              aria-label="Next"
+              aria-label={t('solution.next')}
             >
               <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7" />
             </button>
@@ -570,7 +591,7 @@ const SolutionSection = () => {
               <button
                 className="text-gray-500 hover:text-black text-xl px-2"
                 onClick={handleCloseDetail}
-                aria-label="닫기"
+                aria-label={t('common.close')}
               >
                 ×
               </button>
@@ -584,6 +605,5 @@ const SolutionSection = () => {
     </section>
   );
 };
-
 
 export default SolutionSection;
