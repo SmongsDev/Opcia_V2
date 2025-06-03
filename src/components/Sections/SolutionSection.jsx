@@ -664,7 +664,7 @@ const SolutionSection = ({ current, setCurrent }) => {
                       <h3 className="font-alata text-2xl sm:text-3xl font-medium mb-2 drop-shadow-lg text-white">
                         {solutions[current].title}
                       </h3>
-                      <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                      <p className="text-sm sm:text-base text-white leading-relaxed" style={{ color: 'white' }}>
                         {descriptions[solutions[current].title]}
                       </p>
                     </div>
@@ -703,15 +703,19 @@ const SolutionSection = ({ current, setCurrent }) => {
           </div>
         </div>
 
-        {/* 모바일에서 스와이프 인디케이터 */}
+        {/* 모바일에서 클릭 가능한 Dot Navigation */}
         {deviceInfo.isMobile && (
-          <div className="flex space-x-2 mt-4">
+          <div className="flex space-x-3 mt-4">
             {solutions.map((_, index) => (
-              <div
+              <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === current ? 'bg-black' : 'bg-gray-300'
+                onClick={() => setCurrent(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 touch-manipulation ${
+                  index === current 
+                    ? 'bg-black scale-110' 
+                    : 'bg-gray-300 hover:bg-gray-400 active:bg-gray-500'
                 }`}
+                aria-label={`${t('solution.goToSlide')} ${index + 1}`}
               />
             ))}
           </div>
