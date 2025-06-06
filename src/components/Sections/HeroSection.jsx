@@ -24,7 +24,7 @@ const HeroSection = () => {
             OPCIA Corporation
           </h1>
           <h2 className="text-xl lg:text-2xl font-medium text-white mb-8">
-            <span className="text-yellow-400">O</span>peration : <span className="text-yellow-400">C</span>yber Infiltration <span className="text-yellow-400">A</span>gency
+            <span className="text-yellow-400">OP</span>eration : <span className="text-yellow-400">C</span>yber <span className="text-yellow-400">I</span>nfiltration <span className="text-yellow-400">A</span>gency
           </h2>
           <p className="text-base lg:text-lg text-gray-300 leading-relaxed max-w-3xl mb-12">
             {t('hero.description')}
