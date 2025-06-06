@@ -103,6 +103,13 @@ const SolutionSection = ({ current, setCurrent }) => {
     preloadCurrentImages();
   }, [current, solutions, preloadImage/*, deviceInfo.isMobile*/]);
 
+  // 모든 이미지를 최초 마운트 시 미리 로딩
+  useEffect(() => {
+    solutions.forEach(sol => {
+      preloadImage(sol.image);
+    });
+  }, [solutions, preloadImage]);
+
   // 터치 이벤트 핸들러
   const handleTouchStart = useCallback((e) => {
     if (!deviceInfo.isTouch) return;
