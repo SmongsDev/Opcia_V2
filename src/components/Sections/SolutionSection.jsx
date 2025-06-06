@@ -72,14 +72,9 @@ const SolutionSection = ({ current, setCurrent }) => {
   const [isDetailVisible, setIsDetailVisible] = useState(false);
 
   // 최적화된 이미지 프리로딩
-  const preloadImage = useCallback((src, priority = false) => {
+  const preloadImage = useCallback((src) => {
     if (preloadedImages.has(src)) return Promise.resolve();
     
-    // 모바일에서는 우선순위 이미지만 프리로딩
-    if (deviceInfo.isMobile && !priority) {
-      return Promise.resolve();
-    }
-
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => {
@@ -89,7 +84,7 @@ const SolutionSection = ({ current, setCurrent }) => {
       img.onerror = reject;
       img.src = src;
     });
-  }, [preloadedImages, deviceInfo.isMobile]);
+  }, [preloadedImages]);
 
   // 현재 이미지와 인접 이미지만 프리로딩
   useEffect(() => {
@@ -101,15 +96,12 @@ const SolutionSection = ({ current, setCurrent }) => {
       // 현재 이미지는 항상 프리로딩
       await preloadImage(currentImage, true);
       
-      // 모바일이 아닌 경우에만 인접 이미지 프리로딩
-      if (!deviceInfo.isMobile) {
-        preloadImage(solutions[nextIndex].image, false);
-        preloadImage(solutions[prevIndex].image, false);
-      }
+      preloadImage(solutions[nextIndex].image, false);
+      preloadImage(solutions[prevIndex].image, false);
     };
 
     preloadCurrentImages();
-  }, [current, solutions, preloadImage, deviceInfo.isMobile]);
+  }, [current, solutions, preloadImage/*, deviceInfo.isMobile*/]);
 
   // 터치 이벤트 핸들러
   const handleTouchStart = useCallback((e) => {
